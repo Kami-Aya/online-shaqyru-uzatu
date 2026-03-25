@@ -43,6 +43,10 @@ body {
     border-radius: 5px;
     font-family: 'Playfair Display', serif;
     transition: 0.3s;
+    
+    /* МІНЕ ОСЫ ЖЕРГЕ ЖАҢА СТИЛЬДЕРДІ ҚОСТЫҚ: */
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* Мобильді браузердегі көк түсті жояды */
 }
 
 .lang-switcher button.active {
@@ -189,13 +193,10 @@ body {
     margin: 2px 0;
 }
 
-.heart-divider { 
-    color: #ccc !important; 
-    margin: 10px 0;
-    font-size: 1.2rem; 
-    /* Emoji болып кетпеуі үшін */
-    font-family: serif; 
-    -webkit-text-fill-color: #ccc;
+.heart-divider {
+    color: #ccc !important;
+    font-family: serif !important;
+    -webkit-text-fill-color: #ccc !important; /* iOS-та түсті мәжбүрлеу */
 }
 
 /* Дата */
@@ -502,4 +503,10 @@ body {
         background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
                           url('img/flower3.jpg') !important;
     }
+}
+#music-icon {
+    color: #ffffff !important;
+    text-shadow: none;
+    -webkit-text-fill-color: white; /* iOS үшін */
+    font-family: sans-serif; /* Эмодзи шрифтіне ауысып кетпеуі үшін */
 }
