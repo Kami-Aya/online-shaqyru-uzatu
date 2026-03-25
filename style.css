@@ -124,7 +124,7 @@ body {
 }
 
 .play-btn {
-    background: #8d735b !important; /* Қоңыр түсті мәжбүрлеу */
+    background: #8d735b !important; 
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -133,7 +133,7 @@ body {
     align-items: center;
     cursor: pointer;
     z-index: 15;
-    border: none; /* Артық жиектерді алып тастау */
+    border: none; 
     outline: none;
     -webkit-tap-highlight-color: transparent;
 }
@@ -142,11 +142,11 @@ body {
     color: white !important;
     font-size: 1.5rem;
     line-height: 1;
-    font-family: Arial, sans-serif !important; /* Эмодзи шрифтін бұғаттау */
+    font-family: Arial, sans-serif !important; 
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none; /* Басу тек music-btn-ге әсер етуі үшін */
+    pointer-events: none; 
 }
 
 @keyframes rotateText { 
