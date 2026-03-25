@@ -1,0 +1,485 @@
+@font-face {
+    font-family: 'KZ Boyarsky';
+    src: url('fonts/KZ_Boyarsky.ttf') format('truetype');
+    font-weight: normal; font-style: normal; font-display: swap;
+}
+@font-face {
+    font-family: 'Majestic';
+    src: url('fonts/Majestic.ttf') format('truetype');
+    font-weight: normal; font-style: normal; font-display: swap;
+}
+@font-face {
+    font-family: 'ArtScript.kz';
+    src: url('fonts/ArtScript.kz.ttf') format('truetype');
+    font-weight: normal; font-style: normal; font-display: swap;
+}
+@font-face {
+    font-family: 'SanasoftChroma.kz';
+    src: url('fonts/SanasoftChroma.kz.ttf') format('truetype');
+    font-weight: normal; font-style: normal; font-display: swap;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+    font-family: 'Montserrat', sans-serif; 
+    background: #fdfaf6; 
+    color: #333;
+    overflow-x: hidden;
+}
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+
+.lang-switcher button {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #d4af37;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Playfair Display', serif;
+    transition: 0.3s;
+}
+
+.lang-switcher button.active {
+    background: #d4af37;
+    color: white;
+}
+
+/* 1. Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(255, 252, 248, 0.6), rgba(255, 252, 248, 0.6)), 
+                url('img/hero.jpg') center/cover;
+    text-align: center;
+    position: relative;
+}
+
+.hero-label, .hero h1 { font-family: 'KZ Boyarsky', cursive; }
+
+.hero-label { 
+    letter-spacing: 4px; 
+    text-transform: uppercase; 
+    margin-bottom: 10px; 
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.hero h1 {
+    font-size: clamp(5rem, 14vw, 9rem);
+    font-weight: 400;
+    color: #8d735b;
+    margin: 5px 0;
+    line-height: 1.2;
+}
+
+.date-badge {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    border-block: 1px solid #b8926a; 
+    padding: 8px 18px;
+    display: inline-block;
+    color: #8d735b;
+}
+
+/* 2. Музыка */
+.music-control, .play-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.music-control {
+    position: absolute;
+    bottom: 40px;
+    width: 180px;
+    height: 180px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.music-text {
+    position: absolute;
+    inset: 0; 
+    animation: rotateText 8s linear infinite;
+}
+
+.music-text text {
+    fill: #8d735b !important;
+    font: bold 9px sans-serif; 
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.play-btn {
+    background: #8d735b;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    z-index: 15;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+@keyframes rotateText { 
+    to { transform: rotate(360deg); } 
+}
+
+/* 3. Invitation Card (Вторая страница) */
+.screen-container {
+    background-color: transparent;
+    position: relative;
+    z-index: 2;
+    margin-top: -40px;
+    margin-bottom: -40px; 
+}
+
+.invitation-card {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 80px 20px; 
+    border-radius: 100% 100% 100% 100% / 60px 60px 60px 60px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.1);
+    text-align: center;
+    font-family: 'KZ_Boyarsky', serif;
+}
+
+.header-text {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.bride-name {
+    font-family: 'ArtScript.kz', cursive;
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+    margin: 5px 0;
+    color: #111;
+}
+
+.main-description, .wish-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0 auto 10px auto;
+    max-width: 600px;
+}
+
+.signature { margin: 15px 0; }
+
+.closing, .parents-names { 
+    font-family: 'Great Vibes', cursive; 
+    font-size: 1.8rem;
+}
+
+.parents-label { 
+    font-size: 0.8rem; 
+    font-style: italic; 
+    margin: 2px 0;
+}
+
+.heart-divider { 
+    color: #ccc; 
+    margin: 10px 0;
+    font-size: 1.2rem; 
+}
+
+/* Дата */
+.date-section { margin-top: 10px; }
+
+.month, .year { 
+    letter-spacing: 3px; 
+    text-transform: lowercase; 
+    font-size: 0.85rem; 
+}
+
+.date-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 300px;
+    margin: 5px auto;
+}
+
+.line-info {
+    flex: 1;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 5px 0;
+    font-size: 0.8rem;
+}
+
+.day-number {
+    font-size: 2.5rem;
+    padding: 0 15px;
+    line-height: 1;
+}
+
+/* 4. Location Page (Третья страница) */
+.location-page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    background: url(img/fons.jpeg) center/cover no-repeat fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: -30px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.6); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width: 95%; 
+    max-width: 600px; 
+    padding: 40px 25px;
+    border-radius: 0px; 
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+.info-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.info-block { margin-bottom: 30px; }
+
+.address-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.map-button {
+    display: inline-block;
+    padding: 10px 30px;
+    border: 1.5px solid #333;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.85rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.map-button:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* 5. Таймер и Календарь (Четвертая страница) */
+.full-timer-area {
+    position: relative;
+    z-index: 4;
+    background-color: #fdfaf6;
+    text-align: center;
+    padding: 100px 20px;
+    margin-top: -60px; 
+    margin-bottom: -60px;
+    border-radius: 50% 50% 50% 50% / 60px 60px 60px 60px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.03);
+}
+
+.timer-title-main, 
+.calendar-title-main {
+    font-family: 'ArtScript.kz', cursive;
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+.timer-grid {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.timer-box {
+    background-color: #a4987b;
+    width: 75px;
+    height: 75px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.timer-box span {
+    color: white !important;
+    font-size: 2rem !important;
+    font-weight: bold;
+}
+
+.timer-item label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #000;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.day-name {
+    font-family: 'Marck Script', cursive;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.event-day {
+    position: relative;
+    font-weight: bold;
+}
+
+.event-day::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 38px; height: 38px;
+    border: 2px solid #a4987b;
+    border-radius: 50%;
+}
+
+/* 6. RSVP Section */
+.rsvp-section {
+    padding: 80px 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('img/flower3.jpg') center/cover fixed;
+    color: white;
+    text-align: center;
+}
+
+.rsvp-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: none;           
+    padding: 20px;
+}
+.title-script {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+    font-family: 'SanasoftChroma.kz', cursive;
+    font-size: 2rem;
+}
+
+.rsvp-subtitle {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+    font-family: 'SanasoftChroma.kz', cursive;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.input-group input[type="text"],
+.input-group input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.radio-label {
+    flex: 1;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.radio-label input[type="radio"] {
+    margin-right: 8px;
+    accent-color: #fff;
+}
+
+.radio-label:has(input[type="radio"]:checked) {
+    background: #8d735b; 
+    border-color: #fff;
+    transform: scale(1.05);
+}
+
+.submit-btn {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 15px 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.4s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.submit-btn:hover {
+    background-color: #8d735b;
+    color: white;
+}
+
+.status-msg {
+    margin-top: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
