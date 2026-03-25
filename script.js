@@ -51,7 +51,7 @@ const translations = {
         timeDetail: "5 августа | 17:00",
         addressText: "город Косшы,<br>ул. Республика, 155<br><strong>Ресторан \"Хан Сарайы\"</strong>",
         mapBtn: "Открыть в 2GIS",
-        timerTitle: "До проводов невесты:",
+        timerTitle: "До Қыз ұзату:",
         calendarTitle: "Август 2026",
         calendarDays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
         rsvpTitle: "Дорогой гость,",
