@@ -35,7 +35,7 @@ const translations = {
     },
     ru: {
         heroLabel: "ПРОВОДЫ НЕВЕСТЫ",
-        musicText: "НАЖМИТЕ, ЧТОБЫ ВКЛЮЧИТЬ МУЗЫКУ",
+        musicText: "НАЖМИТЕ ЧТОБЫ ВКЛЮЧИТЬ МУЗЫКУ ",
         headerText: "ДОРОГИЕ ГОСТИ!",
         introText: "Приглашаем вас на",
         brideName: "проводы невесты Тогжан",
