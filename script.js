@@ -76,7 +76,6 @@ function changeLang(lang) {
     document.getElementById('btn-kz').classList.toggle('active', lang === 'kz');
     document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
 
-    // Текст ауыстыру функциясы (қателерді болдырмау үшін)
     const setElText = (selector, text, isHTML = false) => {
         const el = document.querySelector(selector);
         if (el) isHTML ? el.innerHTML = text : el.innerText = text;
@@ -133,7 +132,22 @@ function changeLang(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. МУЗЫКА ---
+    // --- 1. АНИМАЦИЯ СКРОЛЛ КЕЗІНДЕ ---
+    function reveal() {
+        const reveals = document.querySelectorAll(".reveal");
+        for (let i = 0; i < reveals.length; i++) {
+            let windowHeight = window.innerHeight;
+            let elementTop = reveals[i].getBoundingClientRect().top;
+            let elementVisible = 80; // Элемент көріне бастағанда
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal(); // Алғашқы бет үшін іске қосу
+
+    // --- 2. МУЗЫКА ---
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
     const icon = document.getElementById("music-icon");
@@ -151,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. ТАЙМЕР ---
+    // --- 3. ТАЙМЕР ---
     function updateTimer() {
         const targetDate = new Date("August 5, 2026 18:00:00").getTime();
         const now = new Date().getTime();
@@ -172,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // --- 3. RSVP ЛОГИКАСЫ ---
+    // --- 4. RSVP ЛОГИКАСЫ ---
     const rsvpForm = document.getElementById('rsvp-form');
     if (rsvpForm) {
         document.querySelectorAll('input[name="attendance"]').forEach(radio => {
