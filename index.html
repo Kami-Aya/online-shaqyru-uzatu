@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тоғжан - Қыз ұзату</title>
-    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,13 +13,12 @@
         <button onclick="changeLang('kz')" id="btn-kz" class="active">KZ</button>
         <button onclick="changeLang('ru')" id="btn-ru">RU</button>
     </div>
-
     <section class="hero">
-        <h1 class="reveal">Тоғжан</h1>
-        <p class="hero-label reveal delay-1">ҚЫЗ ҰЗАТУ</p>
-        <div class="date-badge reveal delay-2">05/08/2026</div>
+        <h1>Тоғжан</h1>
+        <p class="hero-label">ҚЫЗ ҰЗАТУ</p>
+        <div class="date-badge">05/08/2026</div>
         
-        <div class="music-control reveal delay-3" id="music-btn">
+        <div class="music-control" id="music-btn">
             <div class="music-text">
                 <svg viewBox="0 0 100 100">
                     <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent"/>
@@ -28,89 +27,164 @@
                     </text>
                 </svg>
             </div>
-            <div class="play-btn">
-                <div id="music-icon">&#9654;&#xFE0E;</div>
-            </div>
+            <div class="play-btn" id="music-icon">▶</div>
         </div>
         <audio id="bg-music" loop>
             <source src="img/1.mp3" type="audio/mpeg">
         </audio>
+            <script src="script.js"></script>
     </section>
 
-    <div class="screen-container">
-        <div class="invitation-card reveal">
-            <div class="header-text reveal delay-1">ҚҰРМЕТТІ ҚОНАҚТАР!</div>
-            <div class="intro-text reveal delay-2">Сіздерді қызымыз</div>
-            <div class="bride-name reveal delay-3">Тоғжанның</div>
-            <p class="main-description reveal delay-4">
-                қыз ұзату тойына арналған дастарханымыздың қадірлі қонағы болуға шақырамыз.
-            </p>
-            <p class="wish-text reveal delay-4">
-                Бұл қуанышымыздың куәсі болып, ақ тілектеріңізді арнап, бақытты сәтімізді бірге бөліссеңіз — біз үшін үлкен мәртебе болмақ.
-            </p>
-            <div class="signature reveal delay-5">
-                <div class="closing">Ізгі тілекпен,</div>
-                <div class="parents-label">ата-анасы</div>
-                <div class="parents-names">Нұржан - Әсел</div>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<div class="screen-container">
+    <div class="invitation-card">
+        <div class="header-text">ҚҰРМЕТТІ ҚОНАҚТАР!</div>
+        
+        <div class="intro-text">Сіздерді қызымыз</div>
+        <div class="bride-name">Тоғжанның</div>
+        
+        <p class="main-description">
+            қыз ұзату тойына арналған дастарханымыздың қадірлі қонағы болуға шақырамыз.
+        </p>
+        
+        <p class="wish-text">
+            Бұл қуанышымыздың куәсі болып, ақ тілектеріңізді арнап, бақытты сәтімізді бірге бөліссеңіз — біз үшін үлкен мәртебе болмақ.
+        </p>
+        
+        <div class="signature">
+            <div class="closing">Ізгі тілекпен,</div>
+            <div class="parents-label">ата-анасы</div>
+            <div class="parents-names">Нұржан - Әсел</div>
+        </div>
+        
+        <div class="heart-divider">❤&#xFE0E;</div>
+        
+        <div class="date-section">
+            <div class="month">тамыз</div>
+            <div class="date-row">
+                <div class="line-info">сәрбенбі</div>
+                <div class="day-number">5</div>
+                <div class="line-info">17:00</div>
             </div>
-            <div class="heart-divider reveal">❤&#xFE0E;</div>
-            <div class="date-section reveal delay-1">
-                <div class="month">тамыз</div>
-                <div class="date-row">
-                    <div class="line-info">сәрсенбі</div>
-                    <div class="day-number">5</div>
-                    <div class="line-info">17:00</div>
-                </div>
-                <div class="year">2026</div>
+            <div class="year">2026</div>
+        </div>
+    </div>
+</div>
+
+<section class="location-page">
+    <div class="glass-card">
+        <h2 class="info-title">Той жайлы ақпарат:</h2>
+        
+        <div class="info-block">
+            <p class="label">Той иелері:</p>
+            <p class="parents-names-small">ата-анасы: Нұржан - Әсел</p>
+            <div class="phones">
+                <p> 8 (701) 123-45-67</p>
+                <p> 8 (702) 123-45-67</p>
+            </div>
+        </div>
+
+        <div class="info-block">
+            <h2 class="info-title">Тойдың басталу уақыты:</h2>
+            <p class="time-detail">5 тамыз | 17:00</p>
+        </div>
+
+        <div class="info-block">
+            <h2 class="info-title">Тойдың мекенжайы:</h2>
+            <p class="address-text">
+                Қосшы қаласы,<br>
+                Республика көшесі, 155<br>
+                <strong>"Хан Сарайы" мейрамханасы</strong>
+            </p>
+        </div>
+
+        <a href="https://2gis.kz/kosshy/firm/70000001088027861" class="map-button" target="_blank">
+            2GIS арқылы ашу
+        </a>
+    </div>
+</section>
+
+    <section class="full-timer-area">
+    <div class="timer-part">
+        <h2 class="timer-title-main">Қыз ұзатуға дейін:</h2>
+        <div class="timer-grid">
+            <div class="timer-item">
+                <div class="timer-box"><span id="days">00</span></div>
+                <label>күн</label>
+            </div>
+            <div class="timer-item">
+                <div class="timer-box"><span id="hours">00</span></div>
+                <label>сағат</label>
+            </div>
+            <div class="timer-item">
+                <div class="timer-box"><span id="minutes">00</span></div>
+                <label>минут</label>
+            </div>
+            <div class="timer-item">
+                <div class="timer-box"><span id="seconds">00</span></div>
+                <label>секунд</label>
             </div>
         </div>
     </div>
 
-    <section class="location-page">
-        <div class="glass-card reveal">
-            <h2 class="info-title">Той жайлы ақпарат:</h2>
-            <div class="info-block reveal delay-1">
-                <p class="label">Той иелері:</p>
-                <p class="parents-names-small">ата-анасы: Нұржан - Әсел</p>
-                <div class="phones">
-                    <p> 8 (701) 123-45-67</p>
-                    <p> 8 (702) 123-45-67</p>
+    <div class="calendar-part">
+        <h2 class="calendar-title-main">Тамыз 2026</h2>
+        <div id="butterfly-container"></div>
+        <div class="calendar-grid">
+            <div class="day-name">Дс</div><div class="day-name">Сс</div><div class="day-name">Ср</div>
+            <div class="day-name">Бс</div><div class="day-name">Жм</div><div class="day-name">Сб</div><div class="day-name">Жк</div>
+            
+            <div></div><div></div><div></div><div></div><div></div>
+            
+            <span>1</span><span>2</span>
+            <span>3</span><span>4</span><span class="event-day">5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+            <span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+            <span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span>
+            <span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+            <span>31</span>
+        </div>
+    </div>
+</section>
+
+   <section class="rsvp-section">
+    <div class="rsvp-container">
+        <h2 class="title-script">Құрметті қонақ,</h2>
+        <h3 class="rsvp-subtitle">тойға келетініңізді нақтылаңыз:</h3>
+
+        <form id="rsvp-form">
+            <div class="input-group">
+                <label for="name">Есіміңіз</label>
+                <input type="text" id="name" name="name" placeholder="Аты-жөніңіз" required>
+            </div>
+
+            <div class="input-group">
+                <label>Келе аласыз ба?</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="Келемін" required> 
+                        <span>Келемін</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="Өкінішке орай, келе алмаймын" required>
+                        <span>Өкінішке орай, келе алмаймын</span>
+                    </label>
                 </div>
             </div>
-            <div class="info-block reveal delay-2">
-                <h2 class="info-title">Тойдың басталу уақыты:</h2>
-                <p class="time-detail">5 тамыз | 17:00</p>
-            </div>
-            <div class="info-block reveal delay-3">
-                <h2 class="info-title">Тойдың мекенжайы:</h2>
-                <p class="address-text">
-                    Қосшы қаласы,<br>
-                    Республика көшесі, 155<br>
-                    <strong>"Хан Сарайы" мейрамханасы</strong>
-                </p>
-            </div>
-            <a href="https://2gis.kz/kosshy/firm/70000001088027861" class="map-button reveal delay-4" target="_blank">
-                2GIS арқылы ашу
-            </a>
-        </div>
-    </section>
 
-    <section class="full-timer-area">
-        <div class="timer-part reveal">
-            <h2 class="timer-title-main">Қыз ұзатуға дейін:</h2>
-            <div class="timer-grid">
-                <div class="timer-item"><div class="timer-box"><span id="days">00</span></div><label>күн</label></div>
-                <div class="timer-item"><div class="timer-box"><span id="hours">00</span></div><label>сағат</label></div>
-                <div class="timer-item"><div class="timer-box"><span id="minutes">00</span></div><label>минут</label></div>
-                <div class="timer-item"><div class="timer-box"><span id="seconds">00</span></div><label>секунд</label></div>
+            <div class="input-group" id="person-count-group" style="display: none;">
+                <label for="guests">Қанша адам болады?</label>
+                <input type="number" id="guests" name="guests" value="1" min="1" max="10">
             </div>
-        </div>
-        <div class="calendar-part reveal delay-1">
-            <h2 class="calendar-title-main">Тамыз 2026</h2>
-            <div class="calendar-grid">
-                <div class="day-name">Дс</div><div class="day-name">Сс</div><div class="day-name">Ср</div>
-                <div class="day-name">Бс</div><div class="day-name">Жм</div><div class="day-name">Сб</div><div class="day-name">Жк</div>
-                <div></div><div></div><div></div><div></div><div></div>
-                <span>1</span><span>2</span>
-                <span>3</span><span>4</span><span class="event-day">5</span><span>6</span><span>7</span><span>8</span><span>9</span>
-                <span>10</span>
+
+            <button type="submit" class="submit-btn">Жіберу</button>
+        </form>
+        
+        <div id="form-status" class="status-msg"></div>
+    </div>
+</section>
+
+
+
+</body>
+</html>
