@@ -126,8 +126,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const icon = document.getElementById("music-icon");
     if (musicBtn && music) {
         musicBtn.addEventListener('click', () => {
-            if (music.paused) { music.play().then(() => icon.innerText = "II"); } 
-            else { music.pause(); icon.innerText = "▶"; }
+            if (music.paused) { 
+                music.play().then(() => {
+                    // Мұнда да "II" белгісіне қатыру кодын қосқан дұрыс
+                    icon.innerHTML = "II&#xFE0E;"; 
+                }); 
+            } 
+            else { 
+                music.pause(); 
+                // МІНЕ ОСЫ ЖЕРГЕ ҚОСАСЫЗ:
+                icon.innerHTML = "&#9654;&#xFE0E;"; 
+            }
         });
     }
 
