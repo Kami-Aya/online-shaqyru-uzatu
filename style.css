@@ -124,16 +124,29 @@ body {
 }
 
 .play-btn {
-    background: #8d735b;
+    background: #8d735b !important; /* Қоңыр түсті мәжбүрлеу */
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    color: #fff !important;
-    font-variant-numeric: tabular-nums;
-    -webkit-text-fill-color: white;
-    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
     z-index: 15;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border: none; /* Артық жиектерді алып тастау */
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#music-icon {
+    color: white !important;
+    font-size: 1.5rem;
+    line-height: 1;
+    font-family: Arial, sans-serif !important; /* Эмодзи шрифтін бұғаттау */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Басу тек music-btn-ге әсер етуі үшін */
 }
 
 @keyframes rotateText { 
