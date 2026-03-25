@@ -146,7 +146,39 @@
         </div>
     </div>
 </section>
+    
+   <section class="rsvp-section">
+    <div class="rsvp-container">
+        <h2 class="title-script">Құрметті қонақ,</h2>
+        <h3 class="rsvp-subtitle">тойға келетініңізді нақтылаңыз:</h3>
 
+        <form id="rsvp-form">
+            <div class="input-group">
+                <label for="name">Есіміңіз</label>
+                <input type="text" id="name" name="name" placeholder="Аты-жөніңіз" required>
+            </div>
+
+            <div class="input-group">
+                <label>Келе аласыз ба?</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="Келемін" required> 
+                        <span>Келемін</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="Өкінішке орай, келе алмаймын" required>
+                        <span>Өкінішке орай, келе алмаймын</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-group" id="person-count-group" style="display: none;">
+                <label for="guests">Қанша адам болады?</label>
+                <input type="number" id="guests" name="guests" value="1" min="1" max="10">
+            </div>
+
+            <button type="submit" class="submit-btn">Жіберу</button>
+        </form>
 
         
         <div id="form-status" class="status-msg"></div>
