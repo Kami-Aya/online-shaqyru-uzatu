@@ -125,20 +125,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicBtn = document.getElementById("music-btn");
     const icon = document.getElementById("music-icon");
     if (musicBtn && music) {
-        musicBtn.addEventListener('click', () => {
-            if (music.paused) { 
-                music.play().then(() => {
-                    // Мұнда да "II" белгісіне қатыру кодын қосқан дұрыс
-                    icon.innerHTML = "II&#xFE0E;"; 
-                }); 
-            } 
-            else { 
-                music.pause(); 
-                // МІНЕ ОСЫ ЖЕРГЕ ҚОСАСЫЗ:
-                icon.innerHTML = "&#9654;&#xFE0E;"; 
-            }
-        });
-    }
+    musicBtn.addEventListener('click', () => {
+        if (music.paused) { 
+            music.play().then(() => {
+                icon.innerHTML = "II&#xFE0E;"; // Пауза белгісі
+            }); 
+        } else { 
+            music.pause(); 
+            icon.innerHTML = "&#9654;&#xFE0E;"; // Ойнату белгісі
+        }
+    });
 
     // --- 2. ТАЙМЕР ---
     function updateTimer() {
