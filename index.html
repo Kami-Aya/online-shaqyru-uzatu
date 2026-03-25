@@ -18,20 +18,20 @@
         <p class="hero-label">ҚЫЗ ҰЗАТУ</p>
         <div class="date-badge">05/08/2026</div>
         
-        <div class="music-control" id="music-btn">
-            <div class="music-text">
-                <svg viewBox="0 0 100 100">
-                    <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent"/>
-                    <text font-size="3" font-weight="bold">
-                        <textPath xlink:href="#circlePath">ӘНДІ ҚОСУ ҮШІН БАСЫҢЫЗ  </textPath>
-                    </text>
-                </svg>
+        <div class="music-control">
+            <svg class="music-text" viewBox="0 0 100 100">
+                <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
+                <text>
+                    <textPath xlink:href="#circlePath">ӘНДІ ҚОСУ ҮШІН БАСЫҢЫЗ &nbsp; </textPath>
+                </text>
+            </svg>
+
+            <div class="play-btn" id="music-btn">
+                <div id="music-icon">&#9654;&#xFE0E;</div>
             </div>
-            <div id="music-icon">&#9654;&#xFE0E;</div>
+            
+            <audio id="bg-music" src="img/1.mp3" loop></audio>
         </div>
-        <audio id="bg-music" loop>
-            <source src="img/1.mp3" type="audio/mpeg">
-        </audio>
             <script src="script.js"></script>
     </section>
 
