@@ -523,3 +523,49 @@ body {
     -webkit-text-fill-color: white; /* iOS үшін */
     font-family: sans-serif; /* Эмодзи шрифтіне ауысып кетпеуі үшін */
 }
+/* --- АНИМАЦИЯЛАР (CSS-тің соңына қосыңыз) --- */
+
+/* 1. Анимацияның өзін сипаттау */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px); /* 40px төменнен бастайды */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Өз орнына келеді */
+    }
+}
+
+/* 2. Reveal класы бар элементтердің бастапқы күйі */
+.reveal {
+    opacity: 0;
+    transition: all 0.8s ease-out; /* JavaScript қолданбай-ақ бірден жүруі үшін */
+    animation: fadeInUp 1.2s ease-out forwards;
+    animation-play-state: paused; /* Скролл жасағанша тоқтап тұрады */
+}
+
+/* 3. Элемент көрінгенде іске қосылатын класс (JavaScript арқылы қосылады) */
+.reveal.active {
+    animation-play-state: running;
+}
+
+/* 4. Кезектілік эффектісі (Delay) */
+/* Бірінен кейін бірі шығуы үшін */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1s; }
+
+/* 5. Hero секциясы үшін арнайы (сайт ашыла салып көрінуі үшін) */
+.hero .reveal {
+    animation-play-state: running; /* Hero-дағы мәтіндер бірден істейді */
+}
+
+/* Мобильді құрылғыларда анимацияны аздап жылдамдату (ыңғайлылық үшін) */
+@media (max-width: 768px) {
+    .reveal {
+        animation-duration: 0.8s;
+    }
+}
