@@ -172,48 +172,45 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateTimer, 1000);
     updateTimer();
 
-   // --- 3. RSVP ЛОГИКАСЫ ---
-const rsvpForm = document.getElementById('rsvp-form');
-if (rsvpForm) {
-    document.querySelectorAll('input[name="attendance"]').forEach(radio => {
-        radio.addEventListener('change', function() {
-            const guestGroup = document.getElementById('person-count-group');
-            if (guestGroup) {
-                guestGroup.style.display = (this.value === 'Келемін' || this.value === 'Приду') ? 'block' : 'none';
-            }
+    // --- 3. RSVP ЛОГИКАСЫ ---
+    const rsvpForm = document.getElementById('rsvp-form');
+    if (rsvpForm) {
+        document.querySelectorAll('input[name="attendance"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const guestGroup = document.getElementById('person-count-group');
+                if (guestGroup) {
+                    guestGroup.style.display = (this.value === 'Келемін' || this.value === 'Приду') ? 'block' : 'none';
+                }
+            });
         });
-    });
 
-    rsvpForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const lang = document.getElementById('btn-kz').classList.contains('active') ? 'kz' : 'ru';
-        const status = document.getElementById('form-status');
-        if(status) status.innerHTML = translations[lang].sending;
+        rsvpForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const lang = document.getElementById('btn-kz').classList.contains('active') ? 'kz' : 'ru';
+            const status = document.getElementById('form-status');
+            if(status) status.innerHTML = translations[lang].sending;
 
-        const formData = new FormData(rsvpForm);
-        const name = document.getElementById('name').value;
-        const attendEl = document.querySelector('input[name="attendance"]:checked');
-        const attendance = attendEl ? attendEl.value : "Unknown";
-        const guests = document.getElementById('guests')?.value || "1";
+            const formData = new FormData(rsvpForm);
+            const name = document.getElementById('name').value;
+            const attendEl = document.querySelector('input[name="attendance"]:checked');
+            const attendance = attendEl ? attendEl.value : "Unknown";
+            const guests = document.getElementById('guests')?.value || "1";
 
-        // ЖАҢАРТЫЛҒАН ДЕРЕКТЕР:
-        const token = '8707349994:AAGtwkmC14NrGjcuDIS9ZTbr-AeqPIi7030';
-        const chatId = '1013013764';
-        
-        const message = `<b>🔔 Жаңа жауап!</b>\n<b>👤 Есімі:</b> ${name}\n<b>✅ Таңдауы:</b> ${attendance}\n<b>👥 Адам саны:</b> ${guests}`;
-        const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}&parse_mode=html`;
+            const token = '8707349994:AAGtwkmC14NrGjcuDIS9ZTbr-AeqPIi7030';
+            const chatId = '1013013764';
+            const message = `<b>🔔 Жаңа жауап!</b>\n<b>👤 Есімі:</b> ${name}\n<b>✅ Таңдауы:</b> ${attendance}\n<b>👥 Адам саны:</b> ${guests}`;
+            const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}&parse_mode=html`;
 
-        Promise.all([
-            // Google Sheets-ке жіберу (скрипт сілтемесін өзгертпедім)
-            fetch('https://script.google.com/macros/s/AKfycbwsTGP5-QP4ue9ltMwnDO3a48axlJvsktS2yH_T-xkZDEpD7WrLLarEOASwWzKhLl7tmw/exec', { method: 'POST', body: formData }),
-            // Телеграмға жіберу
-            fetch(telegramUrl)
-        ]).then(() => {
-            if(status) status.innerHTML = translations[lang].successMsg;
-            rsvpForm.reset();
-            rsvpForm.style.display = 'none';
-        }).catch(() => {
-            if(status) status.innerHTML = translations[lang].errorMsg;
+            Promise.all([
+                fetch('https://script.google.com/macros/s/AKfycbwsTGP5-QP4ue9ltMwnDO3a48axlJvsktS2yH_T-xkZDEpD7WrLLarEOASwWzKhLl7tmw/exec', { method: 'POST', body: formData }),
+                fetch(telegramUrl)
+            ]).then(() => {
+                if(status) status.innerHTML = translations[lang].successMsg;
+                rsvpForm.reset();
+                rsvpForm.style.display = 'none';
+            }).catch(() => {
+                if(status) status.innerHTML = translations[lang].errorMsg;
+            });
         });
-    });
-}
+    }
+});
