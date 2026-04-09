@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}&parse_mode=html`;
 
             Promise.all([
-                fetch('https://script.google.com/a/macros/60edu.kz/s/AKfycbxyI4YNwOHCV5slPptqAy6cGH1DJUOJGqDL_isiUfaDXVJq4uzM8BAKXMwLCzBLuVMB/exec', { method: 'POST', body: formData }),
+                fetch('https://script.google.com/a/macros/60edu.kz/s/AKfycbw9tZo12o5h-2Ix8AAu40H05gqEsJVWx_uEcAcvY10ltL-5P1oyP1dhNlX5Vtd_hMw_/exec', { method: 'POST', body: formData }),
                 fetch(telegramUrl)
             ]).then(() => {
                 if(status) status.innerHTML = translations[lang].successMsg;
