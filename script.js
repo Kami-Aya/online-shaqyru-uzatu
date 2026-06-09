@@ -40,7 +40,7 @@ const translations = {
         introText: "Приглашаем вас на ҚЫЗ ҰЗАТУ нашей дочери ",
         brideName: "Тоғжан",
         mainDesc: "В жизни каждой семьи есть моменты, полные трепета и счастья.",
-        wishText: "Мы хотим провести этот важный вечер в кругу близких людей, чья поддержка и добрые слова нам так дороги. Разделите с нами этот счастливый миг, став почетными гостями нашего торжества",
+        wishText: "Мы хотим провести этот важный evening в кругу близких людей, чья поддержка и добрые слова нам так дороги. Разделите с нами этот счастливый миг, став почетными гостями нашего торжества",
         closing: "С наилучшими пожеланиями,",
         parentsLabel: "родители",
         month: "август",
@@ -76,7 +76,6 @@ function changeLang(lang) {
     document.getElementById('btn-kz').classList.toggle('active', lang === 'kz');
     document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
 
-    // Текст ауыстыру функциясы (қателерді болдырмау үшін)
     const setElText = (selector, text, isHTML = false) => {
         const el = document.querySelector(selector);
         if (el) isHTML ? el.innerHTML = text : el.innerText = text;
@@ -128,8 +127,21 @@ function changeLang(lang) {
     const radioSpans = document.querySelectorAll('.radio-label span');
     if(radioSpans[0]) radioSpans[0].innerText = t.radioYes;
     if(radioSpans[1]) radioSpans[1].innerText = t.radioNo;
+
+    // Радио батырмалардың мәндерін де ауыстыру (базаға дұрыс тілде түсуі үшін)
+    const rYes = document.getElementById('radio-yes');
+    const rNo = document.getElementById('radio-no');
+    if(rYes) rYes.value = t.radioYes;
+    if(rNo) rNo.value = t.radioNo;
     
     setElText('.submit-btn', t.submitBtn);
+
+    // Тіл ауысқанда қонақ саны өрісінің көрінісін қайта тексеру
+    const guestGroup = document.getElementById('person-count-group');
+    const checkedRadio = document.querySelector('input[name="attendance"]:checked');
+    if (guestGroup && checkedRadio) {
+        guestGroup.style.display = (checkedRadio.value === 'Келемін' || checkedRadio.value === 'Приду') ? 'block' : 'none';
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -172,57 +184,58 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateTimer, 1000);
     updateTimer();
 
-   // --- 3. RSVP ЛОГИКАСЫ ---
-const rsvpForm = document.getElementById('rsvp-form');
-if (rsvpForm) {
-    document.querySelectorAll('input[name="attendance"]').forEach(radio => {
-        radio.addEventListener('change', function() {
-            const guestGroup = document.getElementById('person-count-group');
-            if (guestGroup) {
-                guestGroup.style.display = (this.value === 'Келемін' || this.value === 'Приду') ? 'block' : 'none';
+    // --- 3. RSVP ЛОГИКАСЫ ---
+    const rsvpForm = document.getElementById('rsvp-form');
+    if (rsvpForm) {
+        document.querySelectorAll('input[name="attendance"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const guestGroup = document.getElementById('person-count-group');
+                if (guestGroup) {
+                    guestGroup.style.display = (this.value === 'Келемін' || this.value === 'Приду') ? 'block' : 'none';
+                }
+            });
+        });
+
+        rsvpForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const lang = document.getElementById('btn-kz').classList.contains('active') ? 'kz' : 'ru';
+            const status = document.getElementById('form-status');
+            if(status) status.innerHTML = translations[lang].sending;
+
+            const name = document.getElementById('name').value;
+            const attendEl = document.querySelector('input[name="attendance"]:checked');
+            const attendance = attendEl ? attendEl.value : "Unknown";
+            const guests = document.getElementById('guests')?.value || "1";
+
+            // Telegram баптаулары
+            const token = '8707349994:AAGtwkmC14NrGjcuDIS9ZTbr-AeqPIi7030';
+            const chatId = '1013013764';
+            const message = `<b>🔔 Жаңа жауап!</b>\n<b>👤 Есімі:</b> ${name}\n<b>✅ Таңдауы:</b> ${attendance}\n<b>👥 Адам саны:</b> ${guests}`;
+            const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}&parse_mode=html`;
+
+            // Форма мәліметтерін жинау
+            const formData = new FormData(rsvpForm);
+
+            try {
+                // 1. СІЗДІҢ ЖАҢА GOOGLE SCRIPT СІЛТЕМЕҢІЗ (mode: 'no-cors' бекітілді)
+                await fetch('https://script.google.com/macros/s/AKfycbx5V99hQXNpLqh4bNQT0IA0uUwhwYUzM4n5ALTJ0VcvXlrLfqhwsQZDV6njFZPfA1F92w/exec', { 
+                    method: 'POST', 
+                    body: formData,
+                    mode: 'no-cors' 
+                });
+
+                // 2. Telegram-ға жіберу
+                await fetch(telegramUrl);
+
+                // Сәтті аяқталса:
+                if(status) status.innerHTML = translations[lang].successMsg;
+                rsvpForm.reset();
+                rsvpForm.style.display = 'none';
+
+            } catch (error) {
+                console.error("Қате орын алды:", error);
+                if(status) status.innerHTML = translations[lang].errorMsg;
             }
         });
-    });
-
-    rsvpForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const lang = document.getElementById('btn-kz').classList.contains('active') ? 'kz' : 'ru';
-        const status = document.getElementById('form-status');
-        if(status) status.innerHTML = translations[lang].sending;
-
-        const name = document.getElementById('name').value;
-        const attendEl = document.querySelector('input[name="attendance"]:checked');
-        const attendance = attendEl ? attendEl.value : "Unknown";
-        const guests = document.getElementById('guests')?.value || "1";
-
-        // Telegram баптаулары
-        const token = '8707349994:AAGtwkmC14NrGjcuDIS9ZTbr-AeqPIi7030';
-        const chatId = '1013013764';
-        const message = `<b>🔔 Жаңа жауап!</b>\n<b>👤 Есімі:</b> ${name}\n<b>✅ Таңдауы:</b> ${attendance}\n<b>👥 Адам саны:</b> ${guests}`;
-        const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}&parse_mode=html`;
-
-        // Форма мәліметтерін жинау
-        const formData = new FormData(rsvpForm);
-
-        try {
-            // 1. СІЗДІҢ ЖАҢА GOOGLE SCRIPT СІЛТЕМЕҢІЗ (mode: 'no-cors' міндетті түрде қосылды)
-            await fetch('https://script.google.com/macros/s/AKfycbx5V99hQXNpLqh4bNQT0IA0uUwhwYUzM4n5ALTJ0VcvXlrLfqhwsQZDV6njFZPfA1F92w/exec', { 
-                method: 'POST', 
-                body: formData,
-                mode: 'no-cors' 
-            });
-
-            // 2. Telegram-ға жіберу
-            await fetch(telegramUrl);
-
-            // Сәтті аяқталса:
-            if(status) status.innerHTML = translations[lang].successMsg;
-            rsvpForm.reset();
-            rsvpForm.style.display = 'none';
-
-        } catch (error) {
-            console.error("Қате орын алды:", error);
-            if(status) status.innerHTML = translations[lang].errorMsg;
-        }
-    });
-}
+    }
+});
